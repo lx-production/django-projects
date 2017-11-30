@@ -8,3 +8,6 @@ __pycache__/
 .static_storage/
 .media/
 local_settings.py
+
+# Settings file
+settings.py
