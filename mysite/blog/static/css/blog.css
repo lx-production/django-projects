@@ -27,14 +27,18 @@ body {
 	overflow: auto;
 	/*background: url(images/faux-columns.png) repeat-y;*/
 }
-#content .sidebar {
+
+/*#content .sidebar {
 	float: left;
-}
+}*/
+
 #content .sidebar.primary { padding: 0 20px 20px 30px; }
 #content .sidebar.secondary { padding: 0 30px 20px 20px; }
+
 #content .sidebar li {
 	list-style: none;
 	font-size: 16px; color: #666; line-height: 24px;
+	margin-bottom: 1em;
 }
 
 
@@ -61,6 +65,11 @@ p {
 h1 {
 	font: 40px Georgia, Serif;
 	margin-bottom: 1.5em
+}
+
+h3, h4 {
+	margin-bottom: 1em;
+	margin-top: 1em;
 }
 
 .date {
