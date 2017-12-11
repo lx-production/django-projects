@@ -1,6 +1,8 @@
 (function(){
-  var jquery_version = '2.1.4';
+  // var jquery_version = '2.1.4';
+  // var jquery_version = '3.2.1';
   var site_url = 'http://127.0.0.1:8000/';
+  // var site_url = '//127.0.0.1:8000/';
   var static_url = site_url + 'static/';
   var min_width = 100;
   var min_height = 100;
@@ -54,7 +56,7 @@
     var conflict = typeof window.$ != 'undefined';
     // Create the script and point to Google API
     var script = document.createElement('script');
-    script.setAttribute('src','http://ajax.googleapis.com/ajax/libs/jquery/' + jquery_version + '/jquery.min.js');
+    script.setAttribute('src','https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js');
     // Add the script to the 'head' for processing
     document.getElementsByTagName('head')[0].appendChild(script);
     // Create a way to wait until script loading
