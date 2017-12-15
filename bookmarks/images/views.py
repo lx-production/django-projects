@@ -11,8 +11,14 @@ from django.views.decorators.http import require_POST
 from .models import Image
 from common.decorators import ajax_required
 from actions.utils import create_action
+from django.conf import settings
+import redis
 
-# Create your views here.
+r = redis.StrictRedis(host=settings.REDIS_HOST,
+                      port=settings.REDIS_PORT,
+                      db=settings.REDIS_DB)
+
+
 @login_required
 def image_create(request):
     """
@@ -41,8 +47,15 @@ def image_create(request):
 
 def image_detail(request, id, slug):
     image = get_object_or_404(Image, id=id, slug=slug)
-    return render(request, 'images/image/detail.html', {'section': 'images',
-                                                        'image': image})
+    # increment total image views by 1
+    total_views = r.incr('image:{}:views'.format(image.id))
+    # increment image ranking by 1
+    r.zincrby('image_ranking', image.id, 1)
+    return render(request,
+                  'images/image/detail.html',
+                  {'section': 'images',
+                   'image': image,
+                   'total_views': total_views})
 
 @ajax_required
 @login_required
